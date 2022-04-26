@@ -36,19 +36,61 @@ add_action( 'wp_enqueue_scripts', 'enqueue_child_styles' );
 	
 // IF ACF-JSON is a requirement create the acf-json folder and uncoment the following
 // // Load fields.
-// add_filter('acf/settings/load_json', 'child_acf_json_load_point');
+add_filter('acf/settings/load_json', 'child_acf_json_load_point');
 
-// function child_acf_json_load_point( $paths ) {
+function child_acf_json_load_point( $paths ) {
 
-//     // remove original path (optional)
-//     unset($paths[0]);
-
-
-//     // append path
-//     $paths[] = get_stylesheet_directory() . '/acf-json';
+    // remove original path (optional)
+    unset($paths[0]);
 
 
-//     // return
-//     return $paths;
+    // append path
+    $paths[] = get_stylesheet_directory() . '/acf-json';
 
-// }
+
+    // return
+    return $paths;
+
+}
+
+function change_video_source_on_cover_block( $block_content, $block ) {
+	if (
+		'core/cover' !== $block['blockName'] &&
+		! isset( $block['attrs']['url'] )
+	) :
+		return $block_content;
+	endif;
+	/*
+	?><pre><?php var_dump( $block['attrs']['url']); ?></pre><?php
+	die;
+	*/
+	$return  = 'my-image-block<div class="my-image-block">';
+	$return .= $block_content;
+	$return .= '</div>';
+
+	return $return;
+}
+
+// add_action('enqueue_block_editor_assets', function() {
+// 	wp_enqueue_script('mlg-gutenberg-filters', get_stylesheet_directory_uri() . '/assets/js/gutenberg-filters.min.js', ['wp-edit-post']);
+// });
+
+/**
+ * Utility Functions
+ */
+require get_stylesheet_directory() . '/inc/utility-functions.php';
+
+/**
+ * Shortcodes
+ */
+require get_stylesheet_directory() . '/inc/shortcodes.php';
+
+/**
+ * Custom Post Types.
+ */
+require get_stylesheet_directory() . '/inc/custom-post-types.php';
+
+/**
+ * Widgets.
+ */
+require get_stylesheet_directory() . '/inc/widgets/offices-widget.php';

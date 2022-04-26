@@ -1,0 +1,206 @@
+/*   Viewport Sizes   */
+$vp_xxs: 380px;
+$vp_xs: 576px;
+$vp_sm: 768px;
+$vp_m: 992px;
+$vp_lg: 1200px;
+$vp_xl: 1680px;
+$vp_xxl: 1920px;
+/*   Wordpress breakpoints   */
+$wp_vp_xs: 600px;
+$wp_vp_sm: 782px; 
+/*   Wordpress breakpoints   */
+/*   /Viewport Sizes   */
+
+/*   Colors   */
+$primary-light-fallback: rgb(17, 56, 82);
+$primary-light: var(--xten-theme-color-light);
+$primary: var(--xten-theme-color);
+$primary-dark: var(--xten-theme-color-dark);
+// $primary-darker: var(--xten-theme-color-darker);
+$secondary-light: var(--xten-secondary-theme-color-light);
+$secondary: var(--xten-secondary-theme-color);
+$secondary-dark: var(--xten-secondary-theme-color-dark);
+// $light-red: rgb(255, 145, 142);
+// $dark-red: rgb(170, 21, 17);
+// $tertiary: rgb(242, 223, 104);
+// $quartiary: rgb(51, 51, 51);
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+$off-white: rgb(241, 243, 245);
+$gray-light: rgb(220, 220, 220);
+$gray: rgb(112, 112, 112);
+$dark: rgb(51, 51, 51);
+$darker: rgb(25, 25, 25);
+$green: rgb(0, 169, 94);
+$red: rgb(255, 0, 0);
+/*   /Colors   */
+
+/*   Fonts   */
+$font-fam-primary: 'Roboto', helvetica, arial, sans-serif;
+$font-fam-secondary: 'PT Serif', 'Times New Roman', serif;
+/*   /Fonts   */
+
+$active: '&:hover,&:focus,&:focus-within,&.active';
+
+/*   Smooth Transition    */
+/*-----TRANSITIONS------*/
+$smooth-transition: all 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+@mixin smooth-transition {
+	transition: $smooth-transition;
+}
+@mixin smoother-transition {
+	@include smooth-transition;
+	backface-visibility: hidden;
+}
+@mixin smoothest-transition {
+	@include smoother-transition;
+	transform: translateZ(0);
+}
+
+$border-radius-theme-style-em: 0.435em;
+$border-radius-theme-style-rem-sm: 1.5rem;
+$border-radius-theme-style-rem-lg: 3rem;
+$card-style: 0 .2rem .5rem .05rem rgba($black,.20);
+$border-card-style: 1px solid rgba($dark, .1);
+$background-blur: blur(5px) brightness(2.2);
+
+@mixin card-style {
+	box-shadow: $card-style;
+	box-shadow: var(--card-style);
+}
+@mixin theme-card-style( $border-radius: $border-radius-theme-style-em ) {
+	border-radius: $border-radius;
+	// border: $border-card-style;
+	@include card-style;
+}
+@mixin flex-margin( $units, $padding: false ) {
+	margin: -$units;
+	> * {
+		@if $padding {
+			padding: $units;
+		} @else {
+			margin: $units;
+		}
+	}
+}
+@mixin leading-p {
+	font-size: 2.5rem;
+}
+@mixin prominent-p {
+	font-weight: 500;
+	font-size: 3rem;
+}
+@mixin background-blur {
+	backdrop-filter: $background-blur;
+}
+@mixin frosty-bg {
+	background-color: rgba($white, .8);
+	@include background-blur;
+}
+
+$primary-gradient: linear-gradient(45deg,$primary, $primary-light);
+@mixin primary-gradient {
+	background-image: $primary-gradient;
+}
+$white-gradient: linear-gradient(45deg, $off-white, rgb(251, 251, 251));
+@mixin white-gradient {
+	background-image: $white-gradient;
+}
+
+@mixin btn {
+	font-size: 1.8rem;
+	font-weight: 600;
+}
+@mixin btn-theme-style {
+	position: relative;
+	color: $primary;
+	@include smoothest-transition;
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0);
+		backface-visibility: hidden;
+		z-index: -1;
+	}
+	&:before {
+		filter: saturate(2.5) brightness(1.2);
+		background-image: linear-gradient(
+			224deg,
+			$primary-light,
+			$primary,
+			$secondary,
+			$secondary-light
+		);
+		background-size: 800% 800%;
+		animation: GradientScroll 7.5s ease infinite;
+	}
+	&:after {
+		background-color: $white;
+		width: calc(100% - .125em);
+		height: calc(100% - .15em);
+		@include smooth-transition;
+	}
+	#{$active} {
+		color: $secondary-dark;
+		&:after {
+			width: calc(100% - .5em);
+			height: calc(100% - .5em);
+		}
+	}
+}
+@keyframes GradientScroll {
+	0%{background-position:93% 0%}
+	50%{background-position:0% 100%}
+	100%{background-position:93% 0%}
+}
+@mixin btn-color-primary {
+	color: $white;
+	background-color: $primary;
+	&[aria-expanded="true"],
+	#{$active} {
+		background-color: $primary-light;
+	}
+}
+@mixin btn-color-white {
+	background-color: $white;
+	&[aria-expanded="true"],
+	#{$active} {
+		color: $primary;
+		background-color: $off-white;
+	}
+}
+@mixin btn-large {
+	font-size: 3rem;
+}
+$landscape-percentage: 56.25%;
+@mixin before-spacer( $pad-bottom: $landscape-percentage ) {
+	position: relative;
+	&:before {
+		content: '';
+		display: block;
+		width: 100%;
+		padding-bottom: $pad-bottom;
+	}
+}
+
+$thin-gray-line: 1px solid rgba($gray, 0.35);
+
+$border-theme-style-em: .075em solid $secondary;
+$border-theme-style-rem: .15rem solid $secondary;
+@mixin border-bottom-theme-style( $border: $border-theme-style-em ) {
+	border-bottom: $border;
+}
+
+@mixin font-awesome-font {
+	font-weight: 900;
+	font-family: 'Font Awesome 5 Free';
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+}

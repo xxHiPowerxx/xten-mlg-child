@@ -1,0 +1,139 @@
+@import 'variables';
+
+
+.component-office {
+	@include card-style;
+	color: $dark;
+	display: flex;
+	align-items: stretch;
+	overflow: hidden;
+
+	.office-title {
+		color: $primary;
+		text-align: center;
+		font-size: 2.5rem;
+		padding-top: .25em;
+		padding-bottom: .25em;
+		margin-bottom: 0;
+		border-bottom: solid 1px $secondary;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		line-height: 1.15;
+	}
+	.office-content {
+		font-size: 2.5rem;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+		line-height: 1;
+		> * {
+			display: flex;
+			font-size: inherit;
+			font-weight: initial;
+			text-align: left;
+			&:not(:first-child) {
+				margin-top: .5em;
+			}
+		}
+		a {
+			&,
+			#{$active} {
+				color: inherit;
+				text-decoration: none;
+			}
+			#{$active} {
+				:not(.office-icon) {
+					text-decoration: underline;
+				}
+			}
+		}
+		> a {
+			#{$active} {
+				.office-icon {
+					transform: translateZ(0) scale(1.2);
+					filter: drop-shadow(0 .05em .03em rgba(0, 0, 0, 0.5));
+				}
+			}
+			.office-icon {
+				filter: drop-shadow(0 0 0 transparent);
+				@include smoother-transition;
+			}
+		}
+	}
+	.office-icon {
+		// float: left;
+		line-height: inherit;
+		margin-right: .25em;
+		min-width: 1em;
+	}
+	
+	.office-coming-soon {
+		flex: 1 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 3rem;
+		font-weight: 700;
+		text-align: center;
+		color: $primary;
+	}
+	// .office-coming-soon-text {
+	// 	max-width: 20rem;
+	// }
+
+}
+
+
+.office-featured-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.office-title-content-wrapper {
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+	width: 100%;
+	// background-color: $white;
+	flex: 1 0;
+	min-height: 22.1rem;
+	@media (min-width: $vp_xs) {
+		min-width: 27.5rem;
+	}
+	> * {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+}
+.component-offices-list {
+	display: flex;
+	align-items: stretch;
+	flex-wrap: wrap;
+}
+
+.anchor-office-phone-number {
+	#{$active} {
+		.office-icon {
+			transform: translateZ(0) rotate(137.5deg) scale(1.2);
+			filter: drop-shadow(.05em -.05em .03em rgba(0, 0, 0, 0.46));
+		}
+	}
+	.office-icon {
+		color: $secondary;
+		@include smoother-transition;
+	}
+}
+.anchor-office-address {
+	.office-icon {
+		color: $primary;
+	}
+}
+.office-address-wrapper {
+	> * {
+		display: block;
+	}
+}
+
+
+
