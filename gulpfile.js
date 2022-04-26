@@ -115,7 +115,8 @@ gulp.task("browser-sync", function() {
 // gulp scripts.
 // Uglifies and concat all JS files into one
 gulp.task("scripts", function() {
-	var scripts = [`${paths.es6}/child-theme.js`];
+	// var scripts = [`${paths.es6}/child-theme.js`];
+	var scripts = [`${paths.es6}/*.js`];
 
 	gulp
 		.src(scripts, { allowEmpty: true })
@@ -132,8 +133,9 @@ gulp.task("scripts", function() {
 				]
 			})
 		)
-		.pipe(concat("child-theme.min.js"))
+		// .pipe(concat("child-theme.min.js"))
 		.pipe(uglify())
+		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest(paths.js));
 
 	return gulp
@@ -151,8 +153,8 @@ gulp.task("scripts", function() {
 				]
 			})
 		)
-		.pipe(concat("child-theme.js"))
-		.pipe(gulp.dest(paths.js));
+		// .pipe(concat("child-theme.js"))
+		// .pipe(gulp.dest(paths.js));
 });
 
 // Run:
