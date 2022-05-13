@@ -1,0 +1,222 @@
+{
+    "key": "group_627ad83bd534a",
+    "title": "Practice Area Attributes",
+    "fields": [
+        {
+            "key": "field_627ad8f4d10e9",
+            "label": "Short Title",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_627ad92ed10eb",
+            "label": "Short Title",
+            "name": "short_title",
+            "type": "text",
+            "instructions": "This title will display in areas such as Dynamic Menus if the Practice Area Title is too long. <br \/>\r\nEG: <br \/>\r\nPractice Area Title: Government Unfair & Deceptive Acts & Practices Civil Penalties <br \/>\r\nShort Title: Gov. UDAP Civil Penalties.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_627ad91ad10ea",
+            "label": "Short Title Accordion Endpoint",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1
+        },
+        {
+            "key": "field_627ad95dd10ed",
+            "label": "Practice Area Icon",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5ff7931d72132",
+            "label": "Icon",
+            "name": "icon_fc",
+            "type": "flexible_content",
+            "instructions": "Choose Whether the Icon Associated with this Practice Area is a Font Awesome Icon, an SVG, or a bitmap (PNG\/JPG).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_5ff778658e656": {
+                    "key": "layout_5ff778658e656",
+                    "name": "font_awesome_icon",
+                    "label": "Font Awesome Icon",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ff7931d72133",
+                            "label": "Font Awesome Icon Handle",
+                            "name": "font_awesome_icon_handle",
+                            "type": "text",
+                            "instructions": "Select from any <b>Font Awesome Icon<\/b> <a href=\"https:\/\/fontawesome.com\/icons?d=gallery\" target=\"_blank\">Listed Here<\/a>.<br\/>\r\nexample: User Icon = <code>user<\/code>",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "user",
+                            "prepend": "fa-",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5ff77e5ff1549": {
+                    "key": "layout_5ff77e5ff1549",
+                    "name": "svg",
+                    "label": "SVG",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ff7931d72134",
+                            "label": "SVG Path",
+                            "name": "svg_path",
+                            "type": "text",
+                            "instructions": "Give the path for the SVG local to the Child Theme.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "\/assets\/img\/",
+                            "placeholder": "",
+                            "prepend": ".\/xten-prose-legal\/",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5ff77e8af154a": {
+                    "key": "layout_5ff77e8af154a",
+                    "name": "bitmap",
+                    "label": "Bitmap",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ff7931d72135",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Add Icon Type",
+            "min": "",
+            "max": 1
+        },
+        {
+            "key": "field_627ad978d10ee",
+            "label": "Practice Area Icon Accordion Endpoint",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "practice-areas"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Advanced Fields for Practice Areas",
+    "modified": 1652219080
+}

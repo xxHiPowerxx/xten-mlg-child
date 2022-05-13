@@ -107,6 +107,18 @@ $white-gradient: linear-gradient(45deg, $off-white, rgb(251, 251, 251));
 @mixin white-gradient {
 	background-image: $white-gradient;
 }
+@mixin gradient-scroll {
+	filter: saturate(2.5) brightness(1.2);
+	background-image: linear-gradient(
+		224deg,
+		$primary-light,
+		$primary,
+		$secondary,
+		$secondary-light
+	);
+	background-size: 800% 800%;
+	animation: GradientScroll 7.5s ease infinite;
+}
 
 @mixin btn {
 	font-size: 1.8rem;
@@ -129,16 +141,7 @@ $white-gradient: linear-gradient(45deg, $off-white, rgb(251, 251, 251));
 		z-index: -1;
 	}
 	&:before {
-		filter: saturate(2.5) brightness(1.2);
-		background-image: linear-gradient(
-			224deg,
-			$primary-light,
-			$primary,
-			$secondary,
-			$secondary-light
-		);
-		background-size: 800% 800%;
-		animation: GradientScroll 7.5s ease infinite;
+		@include gradient-scroll;
 	}
 	&:after {
 		background-color: $white;

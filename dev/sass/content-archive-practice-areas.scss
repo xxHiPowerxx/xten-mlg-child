@@ -1,0 +1,104 @@
+@import 'variables';
+
+.practice-areas-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.listed-practice-area {
+	font-size: 2em;
+	width: auto;
+	flex: 0 1 16.666%;
+	min-width: 30rem;
+	display: block;
+	padding: 0;
+	text-align: center;
+	@include btn-theme-style;
+	color: $secondary-dark;
+	#{$active} {
+		color: $white;
+		text-shadow: var(--text-shadow);
+		.entry-content {
+			height: 100%;
+			opacity: 1;
+			flex: 0;
+		}
+		.listed-practice-area-background {
+			transform: translate3d(0, 0, 0);
+		}
+		.listed-practice-area-icon {
+			color: inherit;
+		}
+	}
+	.post-body {
+		width: 100%;
+		height: 100%;
+		&:before {
+			content: '';
+			padding-bottom: 100%;
+			display: block;
+		}
+		> * {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+		}
+	}
+	.entry-header {
+		margin-bottom: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.entry-title {
+			margin-bottom: 0;
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	.listed-practice-area-icon {
+		font-size: 1.5em;
+		color: $primary;
+	}
+	.entry-content {
+		height: 0;
+		opacity: 0;
+		@include smoothest-transition;
+	}
+}
+.listed-practice-area-background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform: translate3d(0, 100%, 0);
+	@include smoother-transition;
+}
+
+.listed-practice-area-featured-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.listed-practice-area-foreground {
+	position: relative;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+}
+.listed-practice-area-featured-image-wrapper {
+	width: 100%;
+	height: 100%;
+}
+.listed-practice-area-background-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: .75;
+}

@@ -6,6 +6,33 @@
 	@include btn-theme-style;
 }
 /*   /Buttons   */
+.gradient-scroll {
+	@include gradient-scroll;
+}
+/*   Section Heading and Description   */
+.section-heading-description:not(.wp-block-group),
+.section-heading-description.wp-block-group > .wp-block-group__inner-container {
+  display: flex;
+  align-items: center;
+}
+
+.section-heading-description {
+  color: $primary;
+}
+.section-heading {
+  margin-bottom: 0;
+  text-align: center;
+	> :nth-child(even) {
+		color: $secondary-dark;
+	}
+}
+.section-description {
+	margin-bottom: 0;
+	padding-left: 3rem;
+	border-left: .3rem solid $primary;
+	margin-left: 3rem;
+}
+/*   /Section Heading and Description   */
 /*   /Common   */
 
 /*   Site Header   */
