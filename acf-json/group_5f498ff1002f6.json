@@ -1,0 +1,143 @@
+{
+    "key": "group_5f498ff1002f6",
+    "title": "Contact Form",
+    "fields": [
+        {
+            "key": "field_5fe4cd2ecba67",
+            "label": "Remove Contact Form?",
+            "name": "remove_contact_form",
+            "type": "true_false",
+            "instructions": "Choose Whether to remove the Contact Form altogether from this post.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5f49902dd29ae",
+            "label": "Contact Form Override",
+            "name": "contact_form_override",
+            "type": "post_object",
+            "instructions": "Select Which Contact Form to use for this post or page.\r\nWill ignore Contact Form chosen for this Category in Contact Form Widget.\r\nTo Remove Contact Form, Toggle <b>Remove Contact Form<\/b> Setting to <b><i>Yes<\/i><\/b>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "wpcf7_contact_form"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_61c10315deca0",
+            "label": "Case Type Override",
+            "name": "case_type_override",
+            "type": "text",
+            "instructions": "<b>Case Type<\/b> is usually used to dynamically set <b>Case Type in <i>Lead Docket (CRM)<\/i><\/b> while using a <b>shared<\/b> (EG: General) Contact Form.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6222b2fac6d6f",
+            "label": "Marketing Source Case Type",
+            "name": "marketing_source_case_type",
+            "type": "text",
+            "instructions": "Marketing Source Case Type will add itself to the Marketing Source.<br\/>\r\n<b>EG: Google Ad ([marketing_source_case_type])<\/b>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f9aec45c17a8",
+            "label": "Extra Mail Recipients",
+            "name": "extra_mail_recipients",
+            "type": "textarea",
+            "instructions": "List of extra E-Mail Recipients that are added when Contact Form is Submitted on this post.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "practice-areas"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Contact Form Settings for <b>Post, Practice Area, Page, and Video <i>Post Types<\/i><\/b>",
+    "modified": 1652393534
+}
