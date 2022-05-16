@@ -1,20 +1,29 @@
 @import 'variables';
 
+$pa-margin: 1rem;
 .practice-areas-list {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	@include flex-margin($pa-margin);
+	padding-left: 3rem;
+	padding-right: 3rem;
+	@media (min-width: $vp_lg) {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
 }
 .listed-practice-area {
 	font-size: 2em;
 	width: auto;
-	flex: 0 1 16.666%;
+	flex: 0 1 calc( 16.666% - ( 2 * $pa-margin ) );
 	min-width: 30rem;
 	display: block;
 	padding: 0;
 	text-align: center;
 	@include btn-theme-style;
 	color: $secondary-dark;
+	@at-root body:not(.mouse-detected) &,
 	#{$active} {
 		color: $white;
 		text-shadow: var(--text-shadow);
@@ -101,4 +110,8 @@
 	top: 0;
 	left: 0;
 	opacity: .75;
+	@at-root body:not(.mouse-detected) & {
+		animation: none;
+		background-size: auto 222%;
+	}
 }
