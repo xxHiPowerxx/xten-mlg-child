@@ -29,18 +29,25 @@ $post_type          = get_post_type( $post );
 $singular_post_name = str_replace( ' ', '-', strtolower( get_post_type_labels( get_post_type_object( $post_type ) )->singular_name ) );
 $permalink          = esc_url( get_permalink( $post ) );
 $post_id            = get_the_id( $post );
-$post_type_id       = esc_attr( "$post_type-$post_id" );
+$title              = esc_attr( get_field( 'short_title' ) ) ? : get_the_title();
+$archive_id         = esc_attr( "archive-practice-area-$title" );
 $component_name     = "listed-$singular_post_name";
 ?>
-<a id="<?php echo "$post_type_id" ?>" <?php post_class( $component_name .' box-shadow-em' ); ?> href="<?php echo $permalink; ?>" rel="bookmark">
+<a id="<?php echo "$archive_id" ?>" <?php post_class( $component_name .' box-shadow-em' ); ?> href="<?php echo $permalink; ?>" rel="bookmark">
 	<div class="post-body">
 		<div class="post-body-inner">
 			<div class="<?php echo $component_name ?>-background">
 				<?php
+				$featured_image_id = get_post_thumbnail_id( $post );
+				$featured_image_optimal_image_size = xten_get_optimal_image_size(
+					$featured_image_id,
+					array(null, 395),
+					array(1, 1)
+				);
 				$featured_image = get_the_post_thumbnail(
 					$post_id,
-					'full',
-					array('class'=>"$component_name-featured-image")
+					$featured_image_optimal_image_size,
+					array( 'class' => "$component_name-featured-image" )
 				);
 				if ( $featured_image ) :
 					?>
@@ -56,7 +63,6 @@ $component_name     = "listed-$singular_post_name";
 				<header class="entry-header">
 					<div class="entry-meta xten-highlight-font">
 						<?php
-						$title           = esc_attr( get_field( 'short_title' ) ) ? : get_the_title();
 						$icon_row_layout = null;
 						if ( have_rows( 'icon_fc' ) ) :
 							while ( have_rows( 'icon_fc' ) ) :
@@ -99,4 +105,4 @@ $component_name     = "listed-$singular_post_name";
 			</div>
 		</div>
 	</div>
-</a><!-- #<?php echo "$post_type_id" ?> -->
+</a><!-- #<?php echo "$archive_id" ?> -->
