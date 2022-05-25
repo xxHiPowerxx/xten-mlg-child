@@ -32,6 +32,19 @@
 	border-left: .3rem solid $primary;
 	margin-left: 3rem;
 }
+.dark-bg {
+	.section-heading-description {
+		color: $white;
+	}
+	.section-heading {
+		> :nth-child(even) {
+			color: $secondary-light;
+		}
+	}
+	.section-description {
+		border-left-color: $primary-light;
+	}
+}
 /*   /Section Heading and Description   */
 /*   /Common   */
 
