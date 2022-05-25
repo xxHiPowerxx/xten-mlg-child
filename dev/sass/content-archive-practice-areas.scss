@@ -16,7 +16,7 @@ $pa-margin: 1rem;
 .listed-practice-area {
 	font-size: 2em;
 	width: auto;
-	flex: 0 1 calc( 16.666% - ( 2 * $pa-margin ) );
+	flex: 0 1 calc( 16.666% - ( 2 * #{$pa-margin} ) );
 	min-width: 30rem;
 	display: block;
 	padding: 0;
