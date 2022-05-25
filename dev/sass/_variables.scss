@@ -37,8 +37,8 @@ $red: rgb(255, 0, 0);
 /*   /Colors   */
 
 /*   Fonts   */
-$font-fam-primary: 'Roboto', helvetica, arial, sans-serif;
-$font-fam-secondary: 'PT Serif', 'Times New Roman', serif;
+$font-fam-primary: var(--primary-font-family);
+$font-fam-secondary: var(--secondary-font-family);
 /*   /Fonts   */
 
 $active: '&:hover,&:focus,&:focus-within,&.active';
