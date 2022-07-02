@@ -15,7 +15,8 @@ $wp_vp_sm: 782px;
 /*   Colors   */
 $primary-light-fallback: rgb(17, 56, 82);
 $primary-light: var(--xten-theme-color-light);
-$primary: var(--xten-theme-color);
+$primary-fallback: rgb(17, 56, 82);
+$primary: var(--xten-theme-color, $primary-fallback);
 $primary-dark: var(--xten-theme-color-dark);
 // $primary-darker: var(--xten-theme-color-darker);
 $secondary-light: var(--xten-secondary-theme-color-light);
@@ -64,6 +65,8 @@ $border-radius-theme-style-rem-lg: 3rem;
 $card-style: 0 .2rem .5rem .05rem rgba($black,.20);
 $border-card-style: 1px solid rgba($dark, .1);
 $background-blur: blur(5px) brightness(2.2);
+$box-shadow-rem: var(--box-shadow-rem);
+$box-shadow-em: var(--box-shadow-em);
 
 @mixin card-style {
 	box-shadow: $card-style;
@@ -117,16 +120,17 @@ $white-gradient: linear-gradient(45deg, $off-white, rgb(251, 251, 251));
 		$secondary-light
 	);
 	background-size: 800% 800%;
-	animation: GradientScroll 7.5s ease infinite;
+	animation: GradientScroll 7.5s ease infinite forwards;
 }
 
 @mixin btn {
 	font-size: 1.8rem;
 	font-weight: 600;
 }
-@mixin btn-theme-style {
+@mixin btn-theme-style($include-hover: true) {
 	position: relative;
 	color: $primary;
+	text-decoration: none;
 	@include smoothest-transition;
 	&:before,
 	&:after {
@@ -149,11 +153,13 @@ $white-gradient: linear-gradient(45deg, $off-white, rgb(251, 251, 251));
 		height: calc(100% - .15em);
 		@include smooth-transition;
 	}
-	#{$active} {
-		color: $secondary-dark;
-		&:after {
-			width: calc(100% - .5em);
-			height: calc(100% - .5em);
+	@if $include-hover {
+		#{$active} {
+			color: $secondary-dark;
+			&:after {
+				width: calc(100% - .5em);
+				height: calc(100% - .5em);
+			}
 		}
 	}
 }
