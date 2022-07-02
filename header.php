@@ -18,7 +18,7 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body data-spy="scroll" data-target="#xten-scroll-nav" data-offset="100">
+	<body data-spy="scroll" data-target="#xten-scroll-nav" data-offset="100" <?php body_class(); ?>>
 
 		<div id="load-splash" class="loading">
 			<?php
@@ -117,23 +117,42 @@
 
 								<?php
 								$display_site_phone_number = get_theme_mod( 'xten_site_phone_number_with_logo', false );
+								$social_media_icons_list = social_media_icons_list_shortcode();
 								if (
 									$display_site_phone_number ||
-									( $main_nav_search || $nav_menu )
+									( $main_nav_search || $nav_menu ) ||
+									$social_media_icons_list
 								) :
 									?>
 									<div class="site-phone-number-mobile-nav-wrapper">
 										<?php
-										if ( $display_site_phone_number ) :
-											$site_phone_number = get_site_phone_number_func( true );
+										if ( $display_site_phone_number || $social_media_icons_list ) :
 											?>
-											<div class="header-site-phone-number-wrapper">
-												<span class="fa fa-mobile-alt site-phone-number-icon"></span>
+											<div class="site-phone-number-social-icons-wrapper">
 												<?php
-												echo $site_phone_number;
-												?>
-											</div>
-										<?php endif; ?>
+												if ( $social_media_icons_list ) :
+													?>
+													<div class="header-social-media-icons-wrapper">
+														<?php echo $social_media_icons_list; ?>
+													</div>
+													<?php
+												endif; // endif ( $social_media_icons_list ) :
+												if ( $display_site_phone_number ) :
+													$site_phone_number = get_site_phone_number_func( true );
+													?>
+													<div class="header-site-phone-number-wrapper">
+														<span class="fa fa-mobile-alt site-phone-number-icon"></span>
+														<?php
+														echo $site_phone_number;
+														?>
+													</div>
+													<?php
+													endif; // endif ( $display_site_phone_number ) :
+													?>
+												</div>
+												<?php
+											endif; // endif ( $display_site_phone_number || $social_media_icons_list ) :
+											?>
 
 										<?php if ( $main_nav_search || $nav_menu ) : ?>
 											<button id="mobile-nav-open" class="mobile-toggler collapsed" type="button" data-toggle="collapse" aria-controls="mobile-sidebar" aria-expanded="false" aria-label="Toggle navigation" tabindex="0" data-target="#mobile-sidebar">
