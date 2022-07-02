@@ -17,7 +17,7 @@ $pa-margin: 1rem;
 	font-size: 2em;
 	width: auto;
 	flex: 0 1 calc( 16.666% - ( 2 * #{$pa-margin} ) );
-	min-width: 30rem;
+	min-width: 28rem;
 	display: block;
 	padding: 0;
 	text-align: center;
@@ -70,6 +70,9 @@ $pa-margin: 1rem;
 	.listed-practice-area-icon {
 		font-size: 1.5em;
 		color: $primary;
+	}
+	.listed-practice-area-title {
+		margin-top: .5em;
 	}
 	.entry-content {
 		height: 0;
