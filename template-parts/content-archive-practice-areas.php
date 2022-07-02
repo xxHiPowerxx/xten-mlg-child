@@ -63,15 +63,7 @@ $component_name     = "listed-$singular_post_name";
 				<header class="entry-header">
 					<div class="entry-meta xten-highlight-font">
 						<?php
-						$icon_row_layout = null;
-						if ( have_rows( 'icon_fc' ) ) :
-							while ( have_rows( 'icon_fc' ) ) :
-								the_row();
-								$icon_row_layout = get_row_layout();
-								break;
-							endwhile;
-						endif;
-						$icon = xten_get_icon_fc( $icon_row_layout );
+						$icon = xten_get_fc_icon();
 						if ( is_singular() && ! $args['is_listed'] ) :
 							?>
 							<h1 class="entry-title">
@@ -95,7 +87,7 @@ $component_name     = "listed-$singular_post_name";
 					</div><!-- .entry-meta -->
 				</header><!-- .entry-header -->
 				<?php
-				$description = xten_kses_post( xten_get_post_meta_description() );
+				$description = get_the_excerpt();
 				if ( $description ) :
 					?>
 					<div class="entry-content">

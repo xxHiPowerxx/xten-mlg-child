@@ -238,6 +238,7 @@ function xten_child_custom_post_types() {
 															'thumbnail',
 															'custom-fields',
 															'page-attributes',
+															'excerpt',
 														),
 		// You can associate this CPT with a taxonomy or custom taxonomy. 
 		// 'taxonomies'          => array( 'practice-area' ),
