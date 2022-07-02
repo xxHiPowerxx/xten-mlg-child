@@ -32,7 +32,7 @@ function enqueue_child_styles() {
 		// Enqueue Scripts
 
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_child_styles' );
+add_action( 'wp_enqueue_scripts', 'enqueue_child_styles', 99 );
 	
 // IF ACF-JSON is a requirement create the acf-json folder and uncoment the following
 // // Load fields.
@@ -94,3 +94,42 @@ require get_stylesheet_directory() . '/inc/custom-post-types.php';
  * Widgets.
  */
 require get_stylesheet_directory() . '/inc/widgets/offices-widget.php';
+
+function xten_use_short_practice_area_title_for_menu_items( $title, $menu_item, $args, $depth ) {
+	if (
+		$menu_item->type === 'post_type' &&
+		$menu_item->object === 'practice-areas'
+	) :
+		$title = esc_attr( get_field( 'short_title', $menu_item->object_id ) ) ? : get_the_title();
+	endif;
+	return $title;
+}
+add_filter( 'nav_menu_item_title', 'xten_use_short_practice_area_title_for_menu_items', 10, 4 );
+
+function xten_add_icon_to_practice_area_menu_items( $item_output, $item, $depth, $args ) {
+	if (
+		$item->type === 'post_type' &&
+		$item->object === 'practice-areas'
+	) :
+		$icon      = xten_get_fc_icon( $item->object_id );
+		$fragments = explode('>', $item_output);
+		$string    = '';
+		foreach ( $fragments as $index => $fragment ) :
+			if ( $index === array_key_last( $fragments ) ) :
+				break;
+			endif;
+			$string .= "$fragment>";
+			if ( $index === array_key_first( $fragments ) ) :
+				$string .= "<span class=\"practice-area-icon\">$icon</span>";
+			endif;
+		endforeach;
+		$item_output = $string;
+		/*?><pre><?php
+		var_dump($string);
+		?></pre><?php
+		die;*/
+	endif;
+
+	return $item_output;
+}
+add_filter( 'walker_nav_menu_start_el', 'xten_add_icon_to_practice_area_menu_items', 10, 4 );
