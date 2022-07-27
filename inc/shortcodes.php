@@ -16,7 +16,7 @@ function offices_list_shortcode( $atts = '' ) {
 	$atts = $atts === '' ? array() : $atts;
 
 	// Get Component Function.
-	return xten_render_component( 'offices-list' );
+	return xten_render_component( 'offices-list', $atts );
 }
 add_shortcode( 'offices_list', 'offices_list_shortcode' );
 

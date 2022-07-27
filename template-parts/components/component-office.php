@@ -6,11 +6,12 @@
 function component_office( $args = null ) {
 
 	// Enqueue Stylesheet.
-	$handle             = 'office';
-	$component_handle   = 'component-' . $handle;
-	$component_css_path = '/assets/css/' . $component_handle . '.min.css';
+	$handle               = 'office';
+	$component_handle     = 'component-' . $handle;
+	$component_css_path   = '/assets/css/' . $component_handle . '.min.css';
+	$component_css_handle = $component_handle . '-css';
 	wp_register_style(
-		$component_handle . '-css',
+		$component_css_handle,
 		get_theme_file_uri( $component_css_path ),
 		array(
 			'child-style',
@@ -19,9 +20,20 @@ function component_office( $args = null ) {
 		filemtime( get_stylesheet_directory() . $component_css_path ),
 		'all'
 	);
+	wp_enqueue_style( $component_css_handle );
 
-	wp_enqueue_style( $component_handle . '-css' );
-	wp_enqueue_script( 'xten-fancybox-js' );
+	// Enqueue Script.
+	$component_js_path   = '/assets/js/' . $component_handle . '.min.js';
+	$component_js_handle = $component_handle . '-js';
+	wp_register_script(
+		$component_js_handle,
+		get_theme_file_uri( $component_js_path ),
+		array( 'jquery' ),
+		filemtime( get_stylesheet_directory() . $component_js_path ),
+		'all',
+		true
+	);
+	wp_enqueue_script( $component_js_handle );
 
 	$styles              = '';
 	$component_id        = xten_register_component_id( $handle );
@@ -43,20 +55,24 @@ function component_office( $args = null ) {
 		remove_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 	endif;
 
-	$office_title        = get_the_title( $post_id );
-	$office_address      = get_field( 'office_address', $post_id );
-	$address_line_1      = esc_attr( $office_address['address_line_1'] );
-	$address_line_2      = esc_attr( $office_address['address_line_2'] );
-	$city                = esc_attr( $office_address['city'] );
-	$state               = esc_attr( $office_address['state'] );
-	$zip_code            = esc_attr( $office_address['zip_code'] );
-	$office_phone_number = esc_attr( get_field( 'office_phone_number', $post_id ) );
-	$google_maps_link    = esc_url( get_field( 'google_maps_link', $post_id ) );
-	$google_maps_attrs   = $google_maps_link ?
+	$office_title          = get_the_title( $post_id );
+	$office_address        = get_field( 'office_address', $post_id );
+	$address_line_1        = esc_attr( $office_address['address_line_1'] );
+	$address_line_2        = esc_attr( $office_address['address_line_2'] );
+	$city                  = esc_attr( $office_address['city'] );
+	$state                 = esc_attr( $office_address['state'] );
+	$zip_code              = esc_attr( $office_address['zip_code'] );
+	$office_phone_number   = esc_attr( get_field( 'office_phone_number', $post_id ) );
+	$google_maps_link      = esc_url( get_field( 'google_maps_link', $post_id ) );
+	$google_maps_attrs     = $google_maps_link ?
 		'href=' . $google_maps_link . ' target="_blank" title="View on Google Maps (opens in a new tab)"' :
 		null;
-	$office_open         = $office_phone_number !== '';
-	$has_address         = false;
+	$google_maps_embed_attr = "data-inlcude-map=$args[include_map]";
+	$google_maps_embed_url  = $args['include_map'] == true ?
+		esc_url( get_field( 'google_maps_embed_url', $post_id ) ) :
+		null;
+	$office_open           = $office_phone_number !== '';
+	$has_address           = false;
 	foreach ( $office_address as $address_item ) :
 		if ( $address_item !== '' ) :
 			if ( $office_open === false ) :
@@ -66,9 +82,10 @@ function component_office( $args = null ) {
 			break;
 		endif;
 	endforeach;
+
 	ob_start();
 	?>
-	<div id="<?php echo $component_id; ?>" class="component-<?php echo $handle; ?>">
+	<div id="<?php echo $component_id; ?>" class="component-<?php echo $handle; ?>" <?php echo $google_maps_embed_attr; ?>>
 		<?php if ( $featured_image ) : ?>
 			<div class="office-featured-image-wrapper">
 				<?php echo $featured_image; ?>
@@ -81,7 +98,17 @@ function component_office( $args = null ) {
 				?>
 				<h4 class="office-title"><span class="office-title-inner nowrap-parent"><?php echo $_office_title; ?></span></h4>
 			<?php endif; ?>
-			<?php if ( $office_open ) : ?>
+			<?php
+			if ( $office_open ) :
+				// Map Drawer
+				if ( $google_maps_embed_url ) :
+					?>
+					<div class="office-map-drawer">
+						<iframe loading="lazy" class="office-map-iframe" data-src="<?php echo $google_maps_embed_url; ?>"></iframe>
+					</div>
+					<?php
+				endif; // endif ( $args['include_map'] ) :
+				?>
 				<div class="office-content">
 					<?php if ( $office_phone_number !== '' ) : ?>
 						<a class="anchor-office-phone-number" href="tel:<?php echo $office_phone_number; ?>"><span class="office-icon fas fa-mobile-alt"></span><span class="office-phone-number"><?php echo $office_phone_number; ?></span></a>
@@ -121,7 +148,7 @@ function component_office( $args = null ) {
 						</a>
 					<?php endif; // endif ( $has_address ) : ?>
 				</div>
-			<?php
+				<?php
 			else :
 				$coming_soon_text = xten_kses_post( get_field( 'coming_soon_text', $post_id, false ) ) ? : 'Coming Soon!';
 				?>

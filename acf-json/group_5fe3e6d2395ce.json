@@ -203,7 +203,7 @@
         },
         {
             "key": "field_5fea91c74384b",
-            "label": "Google Maps Link",
+            "label": "Google Maps",
             "name": "",
             "type": "accordion",
             "instructions": "",
@@ -235,8 +235,24 @@
             "placeholder": ""
         },
         {
+            "key": "field_62c7252be8643",
+            "label": "Google Maps Embed Url",
+            "name": "google_maps_embed_url",
+            "type": "url",
+            "instructions": "This URL to a Google Map will display in an embedded IFrame if <b>include_maps<\/b> feature is used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
             "key": "field_5fea91b84384a",
-            "label": "Google Maps Link Accordion Endpoint",
+            "label": "Google Maps Accordion Endpoint",
             "name": "",
             "type": "accordion",
             "instructions": "",
@@ -322,5 +338,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Configure the Office with these Attributes. These Attributes can be displayed in different places throughout the website.",
-    "modified": 1630011894
+    "modified": 1657218999
 }

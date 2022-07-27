@@ -13,13 +13,14 @@ $wp_vp_sm: 782px;
 /*   /Viewport Sizes   */
 
 /*   Colors   */
-$primary-light-fallback: rgb(17, 56, 82);
+$primary-light-static: rgb(17, 56, 82);
 $primary-light: var(--xten-theme-color-light);
 $primary-fallback: rgb(17, 56, 82);
 $primary: var(--xten-theme-color, $primary-fallback);
 $primary-dark: var(--xten-theme-color-dark);
 // $primary-darker: var(--xten-theme-color-darker);
-$secondary-light: var(--xten-secondary-theme-color-light);
+$secondary-light-static: rgb(255, 205, 99);
+$secondary-light: var(--xten-secondary-theme-color-light, $secondary-light-static);
 $secondary: var(--xten-secondary-theme-color);
 $secondary-dark: var(--xten-secondary-theme-color-dark);
 // $light-red: rgb(255, 145, 142);
@@ -67,6 +68,7 @@ $border-card-style: 1px solid rgba($dark, .1);
 $background-blur: blur(5px) brightness(2.2);
 $box-shadow-rem: var(--box-shadow-rem);
 $box-shadow-em: var(--box-shadow-em);
+$text-shadow: var(--text-shadow);
 
 @mixin card-style {
 	box-shadow: $card-style;
@@ -212,4 +214,19 @@ $border-theme-style-rem: .15rem solid $secondary;
 	font-style: normal;
 	font-variant: normal;
 	text-rendering: auto;
+}
+
+@mixin square-div {
+	position: relative;
+	&:before {
+		content: '';
+		padding-bottom: 100%;
+		width: 100%;
+		display: block;
+	}
+	> * {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
 }

@@ -5,6 +5,12 @@
 .btn-theme-style {
 	@include btn-theme-style;
 }
+.btn-color-primary {
+	@include btn-color-primary;
+}
+.btn-color-white {
+	@include btn-color-white;
+}
 /*   /Buttons   */
 .gradient-scroll {
 	@include gradient-scroll;
@@ -135,11 +141,16 @@ $alt-bg-dark: $alt-bg-odd-third,$alt-bg-odd-fifth;
 	padding-left: .5em;
 }
 /*   /Border Theme Style   */
-.box-shadow-em {
-	box-shadow: $box-shadow-em;
-}
 .box-shadow-rem {
 	box-shadow: $box-shadow-rem;
+}
+iframe {
+	&[loading="lazy"] {
+		background-image: url(../img/loading-ring.svg);
+		background-size: contain;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+	}
 }
 /*   /Common   */
 
@@ -305,6 +316,9 @@ $alt-bg-dark: $alt-bg-odd-third,$alt-bg-odd-fifth;
 		// color: $white;
 		color: $primary;
 		@include btn-theme-style;
+	}
+	.office-title-content-wrapper {
+		background-color: transparent;
 	}
 	.component-office {
 		flex: 1 1 calc(33.33% - 6rem);
@@ -645,4 +659,61 @@ body {
 	}
 }
 /*   /Post Archive Section   */
+/*   Contact Section   */
+/*   Contact Form   */
+.contact-section {
+	.wpcf7 {
+		label {
+			text-shadow: $text-shadow;
+		}
+		.btn-theme-style,
+		form.invalid,
+		form.unaccepted,
+		form.payment-required {
+			box-shadow: $box-shadow-rem;
+		}
+	}
+}
+.btn-submit {
+	@at-root .btn-theme-style & {
+		border: 0;
+		font-size: inherit;
+		padding: 0;
+		background-color: transparent;
+		outline: none;
+	}
+	+ .wpcf7-spinner {
+		position: absolute;
+		right: -1.5em;
+		margin: 0;
+		border: .1em solid $white;
+	}
+}
+.wpcf7-not-valid-tip {
+  background-color: $white;
+	padding: .25em;
+	line-height: 1;
+}
+.wpcf7 {
+	form {
+		&.invalid,
+		&.unaccepted,
+		&.payment-required {
+			.wpcf7-response-output {
+				background-color: $white;
+				color: $dark;
+				font-size: 1.6rem;
+				margin: 1em 0 0;
+			}
+		}
+	}
+}
+.form-control {
+	#{$active} {
+		border-color: $secondary-light;
+		box-shadow: $box-shadow-rem, 0 0 0 .2rem rgba($secondary-light-static, .75);
+	}
+}
+/*   /Contact Form   */
+/*   /Contact Section   */
 /*   /Home Page   */

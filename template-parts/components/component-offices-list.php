@@ -34,7 +34,7 @@ function component_offices_list( $args = null ) {
 			'inc_featured_image' => $args['inc_featured_image'],
 		);
 		$html .= xten_render_component( 'office', $args );
-	else:
+	else :
 		// if ( $post_ids === null || $post_ids !== '' ) :
 		if ( empty( $post_ids ) ) :
 			$post_ids = get_posts( array (
@@ -48,6 +48,7 @@ function component_offices_list( $args = null ) {
 			$_args = array(
 				'post_id'            => $post_id,
 				'inc_featured_image' => $args['inc_featured_image'],
+				'include_map'        => $args['include_maps'],
 			);
 			$html .= xten_render_component( 'office', $_args );
 		endforeach;
@@ -63,11 +64,12 @@ function component_offices_list( $args = null ) {
 		$multiple_att = $multiple_attr_val ?
 			" data-multiple=\"$multiple_attr_val\"" :
 			null;
+		$include_maps_attr = "data-include-maps=\"$args[include_maps]\"";
 	endif;
 
 	if ( $html !== '' ) :
 		$component_id = xten_register_component_id( $handle );
-		$start_tag    = '<div id="' . $component_id . '" class="component-offices-list"' . $multiple_att . '>';
+		$start_tag    = '<div id="' . $component_id . '" class="component-offices-list"' . $multiple_att . $include_maps_attr . '>';
 		$end_tag      = '</div>';
 		$html         = $start_tag . $html . $end_tag;
 		return $html;
