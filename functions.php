@@ -30,7 +30,7 @@ function enqueue_child_styles() {
 		wp_enqueue_style( 'child-theme-css' );
 
 		// Enqueue Scripts
-
+		wp_enqueue_script( 'child-theme-js' );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_child_styles', 99 );
 	
@@ -94,6 +94,11 @@ require get_stylesheet_directory() . '/inc/custom-post-types.php';
  * Widgets.
  */
 require get_stylesheet_directory() . '/inc/widgets/offices-widget.php';
+
+/**
+ * Include WPCF7 Custom Tags
+ */
+require get_stylesheet_directory() . '/inc/wpcf7-custom-tags.php';
 
 function xten_use_short_practice_area_title_for_menu_items( $title, $menu_item, $args, $depth ) {
 	if (
