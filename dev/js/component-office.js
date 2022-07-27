@@ -12,13 +12,11 @@
 		funcs.lazyLoadIframe = function($iframe) {
 			var dataSrc = $iframe.attr('data-src');
 			$iframe.attr('src', dataSrc);
-			console.log('dataSrc', dataSrc);
 		}
 		funcs.bindLazyLoadIframe = function() {
 			$('iframe[loading="lazy"][data-src]:not([src]), iframe[loading="lazy"][data-src][src=""]').each(function(){
 				var $iframe = $(this),
 					$office = $(this).closest('.component-office');
-				console.log($office);
 				$office.one('mouseover', function() {
 					funcs.lazyLoadIframe($iframe);
 				});

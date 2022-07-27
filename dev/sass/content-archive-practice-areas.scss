@@ -35,7 +35,7 @@ $pa-margin: 1rem;
 		.listed-practice-area-background {
 			transform: translate3d(0, 0, 0);
 		}
-		.listed-practice-area-icon {
+		.practice-area-icon {
 			color: inherit;
 		}
 	}
@@ -67,7 +67,7 @@ $pa-margin: 1rem;
 			flex-direction: column;
 		}
 	}
-	.listed-practice-area-icon {
+	.practice-area-icon {
 		font-size: 1.5em;
 		color: $primary;
 	}
@@ -116,5 +116,15 @@ $pa-margin: 1rem;
 	@at-root body:not(.mouse-detected) & {
 		animation: none;
 		background-size: auto 222%;
+	}
+}
+
+.practice-area-icon {
+	svg {
+		fill: currentColor;
+		width: auto;
+		height: auto;
+		max-width: 1em;
+		max-height: 1em;
 	}
 }

@@ -68,7 +68,7 @@ $component_name     = "listed-$singular_post_name";
 							?>
 							<h1 class="entry-title">
 								<?php if ( $icon ) : ?>
-									<span class="<?php echo $component_name; ?>-icon"><?php echo $icon; ?></span>
+									<span class="<?php echo $singular_post_name; ?>-icon"><?php echo $icon; ?></span>
 								<?php endif; ?>
 								<span class="<?php echo $component_name; ?>-title"><?php echo $title; ?></span>
 							</h1>
@@ -77,7 +77,7 @@ $component_name     = "listed-$singular_post_name";
 							?>
 							<h5 class="entry-title">
 								<?php if ( $icon ) : ?>
-									<span class="<?php echo $component_name; ?>-icon"><?php echo $icon; ?></span>
+									<span class="<?php echo $singular_post_name; ?>-icon"><?php echo $icon; ?></span>
 								<?php endif; ?>
 								<span class="<?php echo $component_name; ?>-title"><?php echo $title; ?></span>
 							</h5>
