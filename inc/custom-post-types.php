@@ -284,7 +284,7 @@ function xten_child_custom_post_types() {
 
 	$icon             = 'businessman';
 	$menu_icon        = 'dashicons-' . $icon;
-	$theme            = 'bolt-on';
+	$theme            = 'xten';
 	// Set UI labels for Custom Post Type
 	$post_labels = array(
 		'name'                => _x( $post_plural, 'Post Type General Name', $theme ),
