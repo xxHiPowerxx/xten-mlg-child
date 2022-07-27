@@ -123,10 +123,10 @@
                     "sub_fields": [
                         {
                             "key": "field_5ff7931d72134",
-                            "label": "SVG Path",
-                            "name": "svg_path",
-                            "type": "text",
-                            "instructions": "Give the path for the SVG local to the Child Theme.",
+                            "label": "SVG",
+                            "name": "svg",
+                            "type": "textarea",
+                            "instructions": "Place SVG Code here.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -134,11 +134,11 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "\/assets\/img\/",
+                            "default_value": "",
                             "placeholder": "",
-                            "prepend": ".\/xten-prose-legal\/",
-                            "append": "",
-                            "maxlength": ""
+                            "maxlength": "",
+                            "rows": "",
+                            "new_lines": ""
                         }
                     ],
                     "min": "",
@@ -218,5 +218,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Advanced Fields for Practice Areas",
-    "modified": 1652219080
+    "modified": 1657574796
 }
